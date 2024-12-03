@@ -150,5 +150,11 @@ if ($_SESSION['quiz_started'] && $_SESSION['current_question'] <= $_SESSION['qui
         }
     }
     shuffle($choices);
+}else {
+    $num1 = 0;
+    $num2 = 0;
+    $operator_symbol = '+';
+    $correct_answer = 0;
+    $choices = [0, 1, 2, 3];
 }
 ?>
