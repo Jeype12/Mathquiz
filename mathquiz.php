@@ -94,4 +94,17 @@ if ($_SESSION['quiz_started'] && isset($_POST['answer'])) {
         $message = "Quiz completed! Final score: Correct: {$_SESSION['score']['right']}, Wrong: {$_SESSION['score']['wrong']}";
     }
 }
+
+if ($_SESSION['quiz_started'] && $_SESSION['current_question'] <= $_SESSION['quiz_settings']['max_item']) {
+    $range = [1, 10]; 
+
+    // Set range based on level
+    if ($_SESSION['quiz_settings']['level'] === '1-10') {
+        $range = [1, 10];
+    } elseif ($_SESSION['quiz_settings']['level'] === '11-100') {
+        $range = [11, 100];
+    } elseif ($_SESSION['quiz_settings']['level'] === 'custom') {
+        $range = [$_SESSION['quiz_settings']['custom_level_start'], $_SESSION['quiz_settings']['custom_level_end']];
+    }
+}
 ?>
