@@ -158,3 +158,54 @@ if ($_SESSION['quiz_started'] && $_SESSION['current_question'] <= $_SESSION['qui
     $choices = [0, 1, 2, 3];
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Math Game</title>
+</head>
+<body>
+    < class="container">
+        <h1 class="header-title">Simple Math Game</h1>
+
+        <?php if ($_SESSION['quiz_started']): ?>
+            <!-- Quiz In Progress -->
+            <div class="question">
+                <?php echo "$num1 $operator_symbol $num2 = ?"; ?>
+            </div>
+            <form method="post" class="text-center">
+                <input type="hidden" name="num1" value="<?= $num1 ?>">
+                <input type="hidden" name="num2" value="<?= $num2 ?>">
+                <?php foreach ($choices as $choice): ?>
+                    <button type="submit" name="answer" value="<?= $choice ?>" class="btn btn-primary m-2">
+                        <?= $choice ?>
+                    </button>
+                <?php endforeach; ?>
+            </form>
+        <?php else: ?>
+            <!-- Quiz Completed or Main Menu -->
+            <div class="text-center">
+                <h3 class="message">Quiz Completed!</h3>
+                <p>Your Final Score:</p>
+                <div class="score-board">
+                    <p>✅ Correct: <strong><?= $_SESSION['score']['right'] ?></strong></p>
+                    <p>❌ Wrong: <strong><?= $_SESSION['score']['wrong'] ?></strong></p>
+                </div>
+                <form method="post" class="d-flex justify-content-center">
+                    <button type="submit" name="start_quiz" class="btn btn-success m-2">
+                        <i class="bi bi-play-fill"></i> Start Quiz
+                    </button>
+                    <button type="submit" name="close_quiz" class="btn btn-danger m-2">
+                        <i class="bi bi-x-circle"></i> Close
+                    </button>
+                    <button type="submit" name="toggle_settings" class="btn btn-secondary m-2">
+                        <i class="bi bi-gear-fill"></i> <?= $_SESSION['show_settings'] ? 'Close Settings' : 'Settings >>' ?>
+                    </button>
+                </form>
+            </div>
+        <?php endif; ?>
+        
+</body>
+</html>
