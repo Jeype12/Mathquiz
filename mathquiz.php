@@ -123,5 +123,18 @@ if ($_SESSION['quiz_started'] && $_SESSION['current_question'] <= $_SESSION['qui
             $operator_symbol = '×';
             break;
     }
+
+    $correct_answer = 0;
+    switch ($_SESSION['quiz_settings']['operator']) {
+        case 'add':
+            $correct_answer = $num1 + $num2;
+            break;
+        case 'subtract':
+            $correct_answer = $num1 - $num2;
+            break;
+        case 'multiply':
+            $correct_answer = $num1 * $num2;
+            break;
+    }
 }
 ?>
