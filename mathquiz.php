@@ -136,5 +136,19 @@ if ($_SESSION['quiz_started'] && $_SESSION['current_question'] <= $_SESSION['qui
             $correct_answer = $num1 * $num2;
             break;
     }
+
+    $range_offset = isset($_SESSION['quiz_settings']['answer_range']) ? $_SESSION['quiz_settings']['answer_range'] : 5; 
+
+    
+    $choices = [$correct_answer];
+
+    while (count($choices) < 4) { 
+        $choice = rand($correct_answer - $range_offset, $correct_answer + $range_offset);
+
+        if (!in_array($choice, $choices)) {
+            $choices[] = $choice;
+        }
+    }
+    shuffle($choices);
 }
 ?>
