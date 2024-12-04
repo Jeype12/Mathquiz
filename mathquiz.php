@@ -165,6 +165,63 @@ if ($_SESSION['quiz_started'] && $_SESSION['current_question'] <= $_SESSION['qui
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Math Game</title>
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light grey background */
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #ffffff; /* White background */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .header-title {
+            font-size: 2.2em;
+            font-weight: bold;
+            text-align: center;
+            color: #4a90e2;
+        }
+        .question {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .score-board {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: #6c757d;
+        }
+        .btn {
+            font-size: 1.1em;
+            padding: 10px 15px;
+        }
+        .settings-section {
+            background-color: #e9ecef; /* Light grey for settings */
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .settings-section h3 {
+            color: #495057;
+        }
+        .message {
+            font-size: 1.2em;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .correct-message {
+            color: #28a745; /* Green for correct */
+        }
+        .wrong-message {
+            color: #dc3545; /* Red for wrong */
+        }
+    </style>
 </head>
 <body>
     < class="container">
