@@ -206,6 +206,48 @@ if ($_SESSION['quiz_started'] && $_SESSION['current_question'] <= $_SESSION['qui
                 </form>
             </div>
         <?php endif; ?>
-        
+
+        <?php if ($_SESSION['show_settings']): ?>
+            <div class="settings-section">
+                <h3>Settings</h3>
+                <form method="post">
+                    <div class="mb-3">
+                        <label>Level:</label><br>
+                        <input type="radio" name="level" value="1-10" <?= $_SESSION['quiz_settings']['level'] === '1-10' ? 'checked' : '' ?>> 1-10<br>
+                        <input type="radio" name="level" value="11-100" <?= $_SESSION['quiz_settings']['level'] === '11-100' ? 'checked' : '' ?>> 11-100<br>
+                        <input type="radio" name="level" value="custom" <?= $_SESSION['quiz_settings']['level'] === 'custom' ? 'checked' : '' ?>> Custom Range<br>
+                    </div>
+
+                    <?php if ($_SESSION['quiz_settings']['level'] === 'custom'): ?>
+                        <div class="mb-3">
+                            <label>Start: <input type="number" name="custom_level_start" value="<?= $_SESSION['quiz_settings']['custom_level_start'] ?>" class="form-control"></label><br>
+                            <label>End: <input type="number" name="custom_level_end" value="<?= $_SESSION['quiz_settings']['custom_level_end'] ?>" class="form-control"></label><br>
+                        </div>
+                    <?php endif; ?>
+
+                    <div class="mb-3">
+                        <label>Max Questions:</label><br>
+                        <input type="number" name="max_item" value="<?= $_SESSION['quiz_settings']['max_item'] ?>" class="form-control"><br>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Answer Range:</label><br>
+                        <input type="number" name="answer_range" value="<?= $_SESSION['quiz_settings']['answer_range'] ?>" min="1" class="form-control"><br>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Operator:</label><br>
+                        <input type="radio" name="operator" value="add" <?= $_SESSION['quiz_settings']['operator'] === 'add' ? 'checked' : '' ?>> Addition (+)<br>
+                        <input type="radio" name="operator" value="subtract" <?= $_SESSION['quiz_settings']['operator'] === 'subtract' ? 'checked' : '' ?>> Subtraction (-)<br>
+                        <input type="radio" name="operator" value="multiply" <?= $_SESSION['quiz_settings']['operator'] === 'multiply' ? 'checked' : '' ?>> Multiplication (×)<br>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" name="update_settings" class="btn btn-primary">Update Settings</button>
+                    </div>
+                </form>
+            </div>
+        <?php endif; ?>
+    </div>
 </body>
 </html>
